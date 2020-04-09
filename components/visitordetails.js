@@ -22,7 +22,7 @@ const styles = (theme) => ({
   },
 });
 
-class IndexPage extends React.Component {
+class VisitorDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,8 +36,6 @@ class IndexPage extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container spacing={2} justify="center">
-        <Grid item xs={12} lg={6}>
           <Card>
             <CardHeader title="Enter your details" />
             <CardContent>
@@ -143,10 +141,8 @@ class IndexPage extends React.Component {
               </Button>
             </CardActions>
           </Card>
-        </Grid>
-      </Grid>
     );
   }
 }
 
-export default withStyles(styles)(IndexPage);
+export default withStyles(styles)(VisitorDetails);
