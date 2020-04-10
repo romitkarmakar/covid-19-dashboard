@@ -5,13 +5,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "npm install --prefix server"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/pickers": "^3.2.10",
+    "deck.gl": "^8.1.1",
+    "mapbox-gl": "^1.9.1",
+    "mongodb": "^3.5.5",
     "next": "9.3.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-map-gl": "^5.2.3",
+    "socket.io-client": "^2.3.0"
   }
 }
