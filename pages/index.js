@@ -5,6 +5,13 @@ import Layout from "../components/layout";
 import Visitordetails from "../components/visitordetails";
 import Typography from "@material-ui/core/Typography";
 import io from "socket.io-client";
+import {
+  ThemeProvider,
+  Message,
+  MessageText,
+  MessageList,
+  MessageGroup,
+} from "@livechat/ui-kit";
 
 const styles = (theme) => ({
   inputField: {
@@ -18,7 +25,7 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount() {
-    const socket = io("http://localhost:8000");
+    const socket = io(process.env.BACKEND_URL);
     socket.on("connect", function () {
       console.log("Connected");
     });
@@ -35,7 +42,27 @@ class IndexPage extends React.Component {
       <Layout>
         <Grid container spacing={2} justify="center">
           <Grid item xs={12} lg={6}>
-            <Typography>Hello World</Typography>
+            <ThemeProvider>
+              <MessageList active>
+                <MessageGroup
+                  avatar="https://livechat.s3.amazonaws.com/default/avatars/male_8.jpg"
+                  onlyFirstWithMeta
+                >
+                  <Message authorName="Jon Smith" date="21:37">
+                    <MessageText>Hey my friend!</MessageText>
+                  </Message>
+                  <Message authorName="Jon Smith" date="21:37">
+                    <MessageText>Hi!</MessageText>
+                  </Message>
+                  <Message authorName="Jon Smith" date="21:37">
+                    <MessageText>Hello, are you there?</MessageText>
+                  </Message>
+                </MessageGroup>
+                <Message isOwn>
+                  <MessageText>Hello! I am Jon!</MessageText>
+                </Message>
+              </MessageList>
+            </ThemeProvider>
           </Grid>
         </Grid>
       </Layout>

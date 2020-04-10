@@ -30,3 +30,6 @@ yarn-error.log*
 .env.production.local
 
 server/node_modules/
+server/.env
+
+.env
