@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Layout from "../components/layout";
 import Visitordetails from "../components/visitordetails";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 import io from "socket.io-client";
 import {
   ThemeProvider,
@@ -17,7 +18,34 @@ const styles = (theme) => ({
   inputField: {
     marginTop: theme.spacing(2),
   },
+  root: {
+  }
 });
+
+const theme = {
+  vars: {
+      'primary-color': '#427fe1',
+      'secondary-color': '#fbfbfb',
+      'tertiary-color': '#fff',
+      'avatar-border-color': 'blue',
+  },
+  AgentBar: {
+      Avatar: {
+          size: '42px',
+      },
+      css: {
+          backgroundColor: 'var(--secondary-color)',
+          borderColor: 'var(--avatar-border-color)',
+      }
+  },
+  MessageList: {
+    css: {
+      backgroundColor: '#dbd8ce',
+      borderRadius: '10px'
+    }
+  }
+}
+
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -42,7 +70,8 @@ class IndexPage extends React.Component {
       <Layout>
         <Grid container spacing={2} justify="center">
           <Grid item xs={12} lg={6}>
-            <ThemeProvider>
+            <Container className={classes.root}>
+              <ThemeProvider theme={theme}>
               <MessageList active>
                 <MessageGroup
                   avatar="https://livechat.s3.amazonaws.com/default/avatars/male_8.jpg"
@@ -62,7 +91,8 @@ class IndexPage extends React.Component {
                   <MessageText>Hello! I am Jon!</MessageText>
                 </Message>
               </MessageList>
-            </ThemeProvider>
+              </ThemeProvider>
+            </Container>
           </Grid>
         </Grid>
       </Layout>
